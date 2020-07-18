@@ -33,12 +33,53 @@ else:
 def push(statement):
     print("cd "+prj_path + prj_name + " git remote add " +repos + statement + " && git push -u"+repos+ "master")
 
+    
+    
 #process
 
+
 if selection == 1:
-    print("Windows")
+    print("windows")
+
 elif selection == 2:
-    print("Linux")
+    os.system(file_statement)
+    print("folder created\n")
+    os.system(init_statement)
+    c_opt = str(input("Do you want to create a file (Y|N): "))
+    if str.lower(c_opt) == 'y':
+     while c_opt =='y':   
+        os.system("clear")
+        file_name = str(input("File name "))
+        os.system("touch " + prj_path + prj_name +"/" + file_name) #create a empty file
+        c_opt = str(input("\n Do you want to create one more file? (Y|N): "))
+
+    e = 'y'
+    git_status = "clear" + "&& cd " + prj_path + prj_name +"&& git status"
+    git_commit = "cd " + prj_path + prj_name +" && git commit "+ file_name +" -m " 
+    os.system(git_status) # list the files
+    while e == 'y':
+        info = str(input("Enter the file name to add: "))
+        os.system("cd " + prj_path + prj_name + "&& git add " + info)
+        e = str(input("Do u want to add one more file (Y|N): "))
+          
+
+    if opt == 'y':
+        print("\n\n Pushing the repos\n\n")
+        push(push_code)
+    elif opt =='n':
+        os.system("clear")
+        os.system(git_status)
+        print("Project has been created and files as beed added")  
+        o = input("Do you want to commit it now")
+        if o == 'y':
+            commit_msg = input("Enter the commit mssg: ")
+            os.system(git_commit +'"'+commit_msg +'"') #To be fixed ...
+            print(git_commit +'"'+commit_msg +'"')
+            os.system(git_status)
+
+
+          
 else:
     print("Error")
+
 
