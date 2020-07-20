@@ -84,8 +84,8 @@ if selection == 1:#windows
         
         push(push_code)
 
-      elif opt =='n':
-            os.system("clear")
+    elif opt =='n':
+        os.system("cls")
         os.system(git_status)
         print("Project has been created and files as beed added")  
         o = input("Do you want to commit it now(Y|N): ")
